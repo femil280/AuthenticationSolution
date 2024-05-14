@@ -2,6 +2,7 @@
 using AuthenticationTest.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +17,8 @@ namespace AuthenticationTest
             // Google OAuth configuration
             var _config = new AuthConfig
             {
-                ClientId = $"714196730937-evm9rbcp0hisptu86tnr691mjhhivi1n.apps.googleusercontent.com",
-                ClientSecret = $"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",
+                ClientId = ConfigurationManager.AppSettings["ClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["ClientSecret"],
                 RedirectUri = "http://localhost:8899/callback",
                 AuthorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
                 TokenEndpoint = "https://oauth2.googleapis.com/token",

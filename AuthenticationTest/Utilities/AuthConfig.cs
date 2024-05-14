@@ -8,8 +8,8 @@ namespace AuthenticationTest.Utilities
 {
     public class AuthConfig
     {
-        public string ClientId { get; set; }
-        public string ClientSecret { get; set; }
+        public string MyCId { get; set; }
+        public string MyCS { get; set; }
         public string RedirectUri { get; set; }
         public string AuthorizationEndpoint { get; set; }
         public string TokenEndpoint { get; set; }

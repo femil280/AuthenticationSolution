@@ -17,8 +17,8 @@ namespace AuthenticationTest
             // Google OAuth configuration
             var _config = new AuthConfig
             {
-                ClientId = ConfigurationManager.AppSettings["ClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["ClientSecret"],
+                MyCId = ConfigurationManager.AppSettings["CId"],
+                MyCS = ConfigurationManager.AppSettings["CS"],
                 RedirectUri = "http://localhost:8899/callback",
                 AuthorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
                 TokenEndpoint = "https://oauth2.googleapis.com/token",

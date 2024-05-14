@@ -20,7 +20,7 @@ namespace AuthenticationTest.Services
         public async Task<string> GetAuthorizationCode()
         {
             await Task.Delay(1000); // 1 second delay
-            var authorizationUrl = $"{_config.AuthorizationEndpoint}?client_id={_config.ClientId}&redirect_uri={_config.RedirectUri}&response_type=code&scope=email%20profile";
+            var authorizationUrl = $"{_config.AuthorizationEndpoint}?client_id={_config.MyCId}&redirect_uri={_config.RedirectUri}&response_type=code&scope=email%20profile";
             Console.WriteLine($"Please authorize the application by visiting: {authorizationUrl}");
             Console.WriteLine("After granting permissions, please enter the authorization code: you see on your browser and hit enter" );
 
@@ -35,8 +35,8 @@ namespace AuthenticationTest.Services
             var tokenRequest = new HttpRequestMessage(HttpMethod.Post, _config.TokenEndpoint);
             tokenRequest.Content = new FormUrlEncodedContent(new[]
             {
-                new KeyValuePair<string, string>("client_id", _config.ClientId),
-                new KeyValuePair<string, string>("client_secret", _config.ClientSecret),
+                new KeyValuePair<string, string>("client_id", _config.MyCId),
+                new KeyValuePair<string, string>("client_secret", _config.MyCS),
                 new KeyValuePair<string, string>("code", authorizationCode),
                 new KeyValuePair<string, string>("grant_type", "authorization_code"),
                 new KeyValuePair<string, string>("redirect_uri", _config.RedirectUri)

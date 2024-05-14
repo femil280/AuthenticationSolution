@@ -16,9 +16,9 @@ namespace AuthenticationTest
             // Google OAuth configuration
             var _config = new AuthConfig
             {
-                ClientId = $"292094900064-k2hgs1e504piqaa9kpp6vrsci3ibqvct.apps.googleusercontent.com",
-                ClientSecret = $"24zIhAFuQBrRupVWod8gJd2Q",
-                RedirectUri = "https://localhost:44353/signin-oidc",
+                ClientId = $"714196730937-evm9rbcp0hisptu86tnr691mjhhivi1n.apps.googleusercontent.com",
+                ClientSecret = $"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",
+                RedirectUri = "http://localhost:8899/callback",
                 AuthorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
                 TokenEndpoint = "https://oauth2.googleapis.com/token",
                 UserInfoEndpoint = "https://www.googleapis.com/oauth2/v3/userinfo"
@@ -26,7 +26,7 @@ namespace AuthenticationTest
 
             // Initialize GoogleAuthService with Google OAuth configuration
             var _authService = new AuthorizationServiceRepo(_config);
-            var userManager = new UserServiceRepo(_authService);
+            var userManager = new UserServiceRepo(_authService, _config);
 
             // Retrieve and display user information
             var userInfo = await userManager.GetTheUserInfo();

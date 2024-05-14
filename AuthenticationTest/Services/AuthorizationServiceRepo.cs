@@ -20,7 +20,7 @@ namespace AuthenticationTest.Services
         public async Task<string> GetAuthorizationCode()
         {
             await Task.Delay(1000); // 1 second delay
-            var authorizationUrl = $"{_config.AuthorizationEndpoint}?client_id={_config.ClientId}&redirect_uri={_config.RedirectUri}&response_type=code&scope=email%20profile&access_type=offline";
+            var authorizationUrl = $"{_config.AuthorizationEndpoint}?client_id={_config.ClientId}&redirect_uri={_config.RedirectUri}&response_type=code&scope=email%20profile";
             Console.WriteLine($"Please authorize the application by visiting: {authorizationUrl}");
             Console.WriteLine("After granting permissions, please enter the authorization code: you see on your browser and hit enter" );
 
@@ -43,7 +43,7 @@ namespace AuthenticationTest.Services
             });
 
             var response =await client.SendAsync(tokenRequest);
-            var responseContent = await response.Content.ReadAsStringAsync();//Regex.Match(response.ToString(), @"\{(?:[^{}]|(?<o>\{)|(?<-o>\}))+(?(o)(?!))\}").Value;
+            var responseContent = await response.Content.ReadAsStringAsync();
             var tokenResponse = JsonConvert.DeserializeObject<TokenResponse>(responseContent);
 
             return tokenResponse.AccessToken;

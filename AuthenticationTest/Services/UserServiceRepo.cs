@@ -13,9 +13,10 @@ namespace AuthenticationTest.Services
     {
         private readonly IAuthorizationService _authService;
         private readonly AuthConfig _config;
-        public UserServiceRepo(IAuthorizationService userService)
+        public UserServiceRepo(IAuthorizationService userService, AuthConfig config)
         {
             _authService = userService;
+            _config = config;
         }
         public async Task<string> GetTheUserInfo()
         {
@@ -23,7 +24,7 @@ namespace AuthenticationTest.Services
             var accessToken =await _authService.GetToken(authorizationCode);
 
             // Retrieve user info using access token
-            if (accessToken == null) 
+            if (accessToken != null) 
             {
                 var client = new HttpClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
